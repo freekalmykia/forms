@@ -56,4 +56,4 @@ jobs:
             docker pull ghcr.io/freekalmykia/forms/forms:latest
             docker stop forms
             docker system prune -f
-            docker run --restart always --name forms -dit -p 5401:5401 ghcr.io/freekalmykia/forms/forms:latest
+            docker run --restart always --net freekalmykia-net --name forms -dit -p 5401:5401 ghcr.io/freekalmykia/forms/forms:latest

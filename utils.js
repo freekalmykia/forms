@@ -112,7 +112,7 @@ export const getDonorsInfo = async (service, authClient, spreadsheetId, range) =
           countries: getCountries(results, answer),
           states: getStates(results, answer)
         },
-        lastUpdated: dayjs.max(dayjs(results.lastUpdated), dayjs(answer.timestamp)).format('MM/DD/YYYY hh:mm')
+        lastUpdated: dayjs.max(dayjs(results.lastUpdated), dayjs(answer.timestamp)).format('MM/DD/YYYY hh:mm A')
       }
     }, defaultData)
 
