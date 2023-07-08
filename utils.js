@@ -1,3 +1,7 @@
+import dayjs from 'dayjs';
+import minMax from 'dayjs/plugin/minMax.js';
+dayjs.extend(minMax);
+
 export const getState = (state, country) => {
   if (country !== 'United States') return null;
   if (state === 'Prefer not  to say') return null;
@@ -107,7 +111,8 @@ export const getDonorsInfo = async (service, authClient, spreadsheetId, range) =
           annually_donors: getAnnuallyDonors(results, answer),
           countries: getCountries(results, answer),
           states: getStates(results, answer)
-        }
+        },
+        lastUpdated: dayjs.max(dayjs(results.lastUpdated), dayjs(answer.timestamp)).format('MM/DD/YYYY hh:mm')
       }
     }, defaultData)
 
@@ -133,5 +138,6 @@ export const defaultData =  {
     annually_donors: 0,
     countries: {},
     states: {}
-  }
+  },
+  lastUpdated: '1/1/2000 00:00:00'
 }
