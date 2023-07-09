@@ -63,10 +63,13 @@ export const getCountries = (results, answer) => {
 }
 
 export const getStates = (results, answer) => {
-  return {
-    ...results.demographics.states,
-    [answer.state || 'Unknown']: (results.demographics.states[answer.state] || 0) + 1
+  if (answer.country === 'United States') {
+    return {
+      ...results.demographics.states,
+      [answer.state || 'Unknown']: (results.demographics.states[answer.state] || 0) + 1
+    }
   }
+  return results.demographics.states;
 }
 
 export const getDonorsInfo = async (service, authClient, spreadsheetId, range) => {
