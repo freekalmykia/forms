@@ -31,13 +31,13 @@ export const getEmail = (str) => {
 }
 
 export const getAmountByFreq = (amount, freq) => {
-  if (freq === 'O') return amount / 12;
+  if (freq === 'O') return parseFloat((amount / 12).toFixed(2));
   return amount;
 }
 
 export const getAmountByPurpose = (amount, purposes, purpose) => {
   if (!purposes.includes(purpose)) return 0;
-  return amount / purposes.length;
+  return parseFloat((amount / purposes.length).toFixed(2));
 }
 
 export const getAmountPerPurpose = (results, answer, purpose) => {
